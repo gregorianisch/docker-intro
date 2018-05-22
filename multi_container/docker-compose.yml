@@ -1,0 +1,18 @@
+version: "3"
+services:
+  web:
+    build: .
+    ports:
+    - "4000:4000"
+    depends_on:
+    - mongo
+    environment:
+    - TEST_ENV=Hi, Stagnation!
+  mongo:
+    image: mongo
+    ports:
+    - "27017:27017"
+    volumes:
+    - persist-mongo:/data/db
+volumes:
+  persist-mongo:
